@@ -21,5 +21,26 @@
         >America</label
       >
     </div>
+
+    <label for="countries">Select a country</label>
+    <select name="" id="countries">
+      <option value="">Select a country</option>
+      <option value="Italy">Italy</option>
+      <option value="France">France</option>
+      <option value="Japan">Japan</option>
+      <option value="Mexico">Mexico</option>
+      <option value="usa">USAd</option>
+    </select>
+
+    <script>
+      function showSelectedCountry(event) {
+        if (event.target.value.length > 0) {
+          alert(event.target.value);
+        }
+      }
+      let countriesSelect = document.querySelector("#countries");
+
+      countriesSelect.addEventListener("change", showSelectedCountry);
+    </script>
   </body>
 </html>
