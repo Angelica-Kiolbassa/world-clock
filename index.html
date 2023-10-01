@@ -2,6 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>World Clock</title>
   </head>
   <body>
@@ -32,6 +33,12 @@
       <option value="usa">USAd</option>
     </select>
 
+    <title>JS Timing Event</title>
+    <div id="hello">Hello</div>
+    <div id="date"></div>
+    <div id="milliseconds"></div>
+    <div id="moment"></div>
+
     <script>
       function showSelectedCountry(event) {
         if (event.target.value.length > 0) {
@@ -41,6 +48,27 @@
       let countriesSelect = document.querySelector("#countries");
 
       countriesSelect.addEventListener("change", showSelectedCountry);
+
+      setTimeout(() => {
+        let helloBox = document.querySelector("#hello");
+        helloBox.innerHTML = "HELLO!";
+      }, 3000);
+
+      function displayDate() {
+        let date = document.querySelector("#date");
+
+        date.innerHTML = new Date();
+      }
+
+      setInterval(displayDate, 1000);
+
+      function showMilliseconds() {
+        let milliseconds = document.querySelector("#milliseconds");
+        let currentDate = new Date();
+        milliseconds.innerHTML = currentDate.getMilliseconds();
+      }
+      setTimeout(displayDate, 3000);
+      setInterval(showMilliseconds, 1);
     </script>
   </body>
 </html>
