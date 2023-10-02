@@ -2,6 +2,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
     <title>World Clock</title>
   </head>
   <body>
@@ -11,6 +13,7 @@
 
       <input type="submit" name="submit" id="" />
     </div>
+    <br />
     <div>
       <input type="radio" name="continent" id="Europe" /><label for="europe"
         >Europe</label
@@ -22,6 +25,7 @@
       >
     </div>
 
+    <br />
     <label for="countries">Select a country</label>
     <select name="" id="countries">
       <option value="">Select a country</option>
@@ -29,14 +33,19 @@
       <option value="France">France</option>
       <option value="Japan">Japan</option>
       <option value="Mexico">Mexico</option>
-      <option value="usa">USAd</option>
+      <option value="usa">USA</option>
     </select>
 
     <title>JS Timing Event</title>
     <div id="hello">Hello</div>
+    <br />
     <div id="date"></div>
+    <br />
     <div id="milliseconds"></div>
-    <div id="moment"></div>
+    <br />
+    <div id="tokyo"></div>
+    <br />
+    <div id="local"></div>
 
     <script>
       function showSelectedCountry(event) {
@@ -68,6 +77,19 @@
       }
       setTimeout(displayDate, 3000);
       setInterval(showMilliseconds, 1);
+
+      let tokyoTime = moment()
+        .tz("Asia/Tokyo")
+        .format("dddd, MMMM D, YYYY h:m A");
+
+      let tokyoElement = document.querySelector("#tokyo");
+      tokyoElement.innerHTML = tokyoTime;
+
+      let localTimezone = moment.tz.guess();
+      let localElement = document.querySelector("#local");
+      localElement.innerHTML = `Your current time zone is ${localTimezone} and the current time is ${moment().format(
+        "h:m A"
+      )}`;
     </script>
   </body>
 </html>
